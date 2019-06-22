@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,iBAGE,QAAS,CACT,SAAU,CACV,kBAAmB,CACnB,eACF,CAEA,KACE,eACF","file":"main.21b70978.chunk.css","sourcesContent":["*,\n*:after,\n*:before{\n  margin: 0;\n  padding: 0;\n  box-sizing: inherit;\n  list-style: none;\n}\n\nhtml{\n  font-size: 62.5%;\n}\n"]}
