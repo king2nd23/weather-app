@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CurrentWeather from "./CurrentWeather";
+import WeatherIcons from 'react-weathericons';
 
 class App extends React.Component {
   state = { lat: null, long: null, errormsg: "" };
@@ -51,7 +52,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <CurrentWeather />
+        <CurrentWeather icon=""/>
       </div>
     );
   }
