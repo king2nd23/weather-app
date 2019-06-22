@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import CurrentWeather from "./CurrentWeather";
 
 class App extends React.Component {
   state = { lat: null, long: null, errormsg: "" };
@@ -47,15 +48,10 @@ class App extends React.Component {
   }
 
 
-
-
-
-
-  ///////
   render() {
     return (
       <div>
-        <p>Hello</p>
+        <CurrentWeather />
       </div>
     );
   }
