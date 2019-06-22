@@ -27,14 +27,21 @@ class App extends React.Component {
       fetch(apiCall)
         .then(res => res.json())
         .then(response => {
-          let string = JSON.stringify(response.daily.data);
-          let parsed = JSON.parse(string);
-          let iconArray = parsed.map((item) => {
+          //info for weekly weather forecase
+          let dailyString = JSON.stringify(response.daily.data);
+          let dailyParsed = JSON.parse(dailyString);
+          let iconArray = dailyParsed.map((item) => {
             return item.icon;
           });
+          //info for current weather conditions
+          let currentString = JSON.stringify(response.currently);
+          let currentParsed = JSON.parse(currentString);
+          // let currentIcon = currentParsed.map((item) => {
+          //   return item.icon;
+          // })
           console.log(iconArray);
-          console.log(parsed);
           console.log(response);
+          console.log(currentParsed);
         })
         .catch(error => console.log(error));
       console.log(apiCall);
