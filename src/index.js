@@ -27,26 +27,26 @@ class App extends React.Component {
       fetch(apiCall)
         .then(res => res.json())
         .then(response => {
-          //info for weekly weather forecase
-          let dailyString = JSON.stringify(response.daily.data);
-          let dailyParsed = JSON.parse(dailyString);
-          let iconArray = dailyParsed.map((item) => {
+          //get weekly weather forecast
+          let dailyString = response.daily.data;
+          let iconArray = dailyString.map((item) => {
             return item.icon;
           });
-          //info for current weather conditions
-          let currentString = JSON.stringify(response.currently);
-          let currentParsed = JSON.parse(currentString);
-          // let currentIcon = currentParsed.map((item) => {
-          //   return item.icon;
-          // })
-          console.log(iconArray);
-          console.log(response);
-          console.log(currentParsed);
+          //get current weather conditions
+          let currentWeather = response.currently;
+          let currentWind = currentWeather.windSpeed;
+          let chanceOfRain = currentWeather.precipProbability;
+          let currentHumidity = currentWeather.humidity;
+          let currentIcon = currentWeather.icon;
+          let currentTemp = currentWeather.apparentTemperature;
+          //get high and low //
+          let highTemp = response.daily.data[0].temperatureHigh;
+          let lowTemp = response.daily.data[0].temperatureLow;
+          console.log(currentWeather);
         })
         .catch(error => console.log(error));
       console.log(apiCall);
     };
-
     function getWeather() {
       setTimeout(() => {
         getWeatherData();
@@ -59,7 +59,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <CurrentWeather icon=""/>
+        <CurrentWeather icon={this.currentIcon} currentTemp={this.currentTemp}
+           high={this.highTemp} low={this.lowTemp} wind={this.currentWind}
+           chanceOfRain={this.chanceOfRain} humidity= "currentHumidity" />
       </div>
     );
   }
