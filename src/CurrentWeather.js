@@ -25,7 +25,7 @@ const CurrentWeather = (props) => {
         </li>
         <li className= "chanceOfPrecip" style= { {fontSize: "1.5rem"} }>
           <WiUmbrella size={40} color='#000' />
-          <span>{props.currentWind}</span>
+          <span>{props.chanceOfRain}</span>
         </li>
         <li className= "currentHumidity" style= { {fontSize: "1.5rem"} }>
           <WiRaindrops size={40} color='#000' />
