@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CurrentWeather from "./CurrentWeather";
-import WeatherIcons from "react-weathericons";
+import { WiDaySunny, WiNightClear, WiRain, WiSnow, WiSleet, WiStrongWind, WiFog,
+WiCloudy, WiDayCloudy, WiNightAltPartlyCloudy, WiUmbrella,WiRaindrops, WiWindy}
+from 'weather-icons-react';
 
+//setting up initial state
 class App extends React.Component {
   state = {
     lat: null,
@@ -46,10 +49,42 @@ class App extends React.Component {
         .then(res => res.json())
         .then(response => {
           let currentWeather = response.currently;
+
+          //setting the icon for current weather, the name of icons in the library does not match icon names given by the api
+          this.setState({ icon: currentWeather.icon });
+            if (this.state.icon === "clear-day") {
+              this.setState({ icon:  <WiDaySunny size={200} color='#000' />})
+              };
+            if (this.state.icon === "clear-night") {
+              this.setState({ icon:  <WiNightClear size={200} color='#000' />})
+              };
+            if (this.state.icon === "rain") {
+              this.setState({ icon:  <WiRain size={200} color='#000' />})
+              };
+            if (this.state.icon === "snow") {
+              this.setState({ icon:  <WiSnow size={200} color='#000' />})
+              };
+            if (this.state.icon === "sleet") {
+              this.setState({ icon:  <WiSleet size={200} color='#000' />})
+              };
+            if (this.state.icon === "wind") {
+              this.setState({ icon:  <WiStrongWind size={200} color='#000' />})
+              };
+            if (this.state.icon === "fog") {
+              this.setState({ icon:  <WiFog size={200} color='#000' />})
+              };
+            if (this.state.icon === "cloudy") {
+              this.setState({ icon:  <WiCloudy size={200} color='#000' />})
+              };
+            if (this.state.icon === "partly-cloudy-day") {
+              this.setState({ icon:  <WiDayCloudy size={200} color='#000' />})
+            };
+            if (this.state.icon === "partly-cloudy-night") {
+              this.setState({ icon:  <WiNightAltPartlyCloudy size={200} color='#000' />})
+            };
           this.setState({ currentWind: currentWeather.windSpeed });
           this.setState({ chanceOfRain: currentWeather.precipProbability });
           this.setState({ currentHumidity: currentWeather.humidity });
-          this.setState({ currentIcon: currentWeather.icon });
           this.setState({ currentTemp: currentWeather.apparentTemperature });
           this.setState({ highTemp: response.daily.data[0].temperatureHigh });
           this.setState({ lowTemp: response.daily.data[0].temperatureLow });
@@ -59,15 +94,17 @@ class App extends React.Component {
         .catch(error => console.log(error));
     };
 
+    //runs the apiURL() and the apiResponse()
     const weatherComponents = async () => {
       apiURL();
       await apiResponse(apiURL());
     };
 
+    //using setTimeout to wait for geolocation until I find a more efficient way
     function getWeather() {
       setTimeout(() => {
         weatherComponents();
-      }, 4000);
+      }, 7000);
     }
     getWeather();
   }
@@ -76,7 +113,7 @@ class App extends React.Component {
     return (
       <div>
         <CurrentWeather
-          icon={this.state.currentIcon}
+          icon={this.state.icon}
           currentTemp={this.state.currentTemp}
           high={this.state.highTemp}
           low={this.state.lowTemp}

@@ -10,7 +10,7 @@ const CurrentWeather = (props) => {
     <React.Fragment>
     <div className= "todaysDetails" style={ {display: "inline-block"} }>
       <div className= "icon" style={ {display: "inline-block", verticalAlign: "middle"} }>
-        <WiStrongWind size={200} color='#000' />
+        {props.icon}
       </div>
       <div className="dailyTemp" style={ {display: "inline-block", verticalAlign: "middle"} }>
         <p className="currentTemp" style={ {fontSize: "9rem"} }>{props.currentTemp}</p>
@@ -20,7 +20,7 @@ const CurrentWeather = (props) => {
     <div className= "currentWeatherDetails" style={ {display: "inline-block", verticalAlign: "middle"} }>
       <ul style={ {listStyle: "none"} }>
         <li className= "currentWindSpeed" style= { {fontSize: "1.5rem", textAlign: "center"} }>
-          <WiWindy size={40} color='#000' />
+          <WiStrongWind size={40} color='#000' />
           <span>{props.wind}</span>
         </li>
         <li className= "chanceOfPrecip" style= { {fontSize: "1.5rem"} }>
