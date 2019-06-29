@@ -82,12 +82,12 @@ class App extends React.Component {
             if (this.state.icon === "partly-cloudy-night") {
               this.setState({ icon:  <WiNightAltPartlyCloudy size={200} color='#000' />})
             };
-          this.setState({ currentWind: currentWeather.windSpeed });
+          this.setState({ currentWind: Math.round(currentWeather.windSpeed) });
           this.setState({ chanceOfRain: currentWeather.precipProbability });
           this.setState({ currentHumidity: currentWeather.humidity });
-          this.setState({ currentTemp: currentWeather.apparentTemperature });
-          this.setState({ highTemp: response.daily.data[0].temperatureHigh });
-          this.setState({ lowTemp: response.daily.data[0].temperatureLow });
+          this.setState({ currentTemp: Math.round(currentWeather.apparentTemperature) });
+          this.setState({ highTemp: Math.round(response.daily.data[0].temperatureHigh) });
+          this.setState({ lowTemp: Math.round(response.daily.data[0].temperatureLow) });
           console.log(currentWeather);
           console.log(response);
         })
