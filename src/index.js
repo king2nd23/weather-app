@@ -104,7 +104,7 @@ class App extends React.Component {
     function getWeather() {
       setTimeout(() => {
         weatherComponents();
-      }, 7000);
+      }, 5000);
     }
     getWeather();
   }
