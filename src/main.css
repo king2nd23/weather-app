@@ -32,6 +32,8 @@ html{
 .currentWeatherDetails{
   color: #808080;
 }
-.currentWindSpeed span{
-
+.currentWeatherDetails span{
+  position: relative;
+top: -13px;
+transform: perspective(1px) translateY(-50%);
 }
