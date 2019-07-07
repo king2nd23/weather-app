@@ -59,6 +59,11 @@ body{
   display: inline-block;
   vertical-align: middle;
 }
+.summary{
+  font-size: 1.75rem;
+  display: block;
+  color: #373D3F;
+}
 .weatherApp{
  height: auto;
  width: 50%;
@@ -69,4 +74,35 @@ body{
 }
 .todaysDetails{
   display: inline-block;
+}
+
+/* Media Queries */
+@media (max-width: 960px) {
+  .currentWeatherDetails{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+  }
+  .currentWeatherDetails li{
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .currentWeatherDetails li span{
+    height: inherit;
+    position: relative;
+    top: -7px;
+  }
+  .dailyTemp{
+    display: block;
+    margin: 0 auto 20px auto;
+  }
+  .icon{
+    display: block;
+    margin: 0 auto;
+  }
+  .todaysDetails{
+    display: block;
+    margin: 0 auto;
+  }
 }

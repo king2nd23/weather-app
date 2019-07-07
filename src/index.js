@@ -17,7 +17,8 @@ class App extends React.Component {
     low: null,
     wind: null,
     chanceOfRain: null,
-    humidity: null
+    humidity: null,
+    summary: null
   };
 
   componentDidMount() {
@@ -53,7 +54,7 @@ class App extends React.Component {
           //setting the icon for current weather, the name of icons in the library does not match icon names given by the api
           this.setState({ icon: currentWeather.icon });
             if (this.state.icon === "clear-day") {
-              this.setState({ icon:  <WiDaySunny size={200} color='#000' />})
+              this.setState({ icon:  <WiDaySunny size={200} color='#fff917' />})
               };
             if (this.state.icon === "clear-night") {
               this.setState({ icon:  <WiNightClear size={200} color='#000' />})
@@ -83,11 +84,12 @@ class App extends React.Component {
               this.setState({ icon:  <WiNightAltPartlyCloudy size={200} color='#000' />})
             };
           this.setState({ currentWind: Math.round(currentWeather.windSpeed) });
-          this.setState({ chanceOfRain: currentWeather.precipProbability });
-          this.setState({ currentHumidity: currentWeather.humidity });
+          this.setState({ chanceOfRain: Math.round(currentWeather.precipProbability) * 100 });
+          this.setState({ currentHumidity: currentWeather.humidity * 100});
           this.setState({ currentTemp: Math.round(currentWeather.temperature) });
           this.setState({ highTemp: Math.round(response.daily.data[0].temperatureHigh) });
           this.setState({ lowTemp: Math.round(response.daily.data[0].temperatureLow) });
+          this.setState({ summary: currentWeather.summary });
           console.log(currentWeather);
           console.log(response);
         })
@@ -120,6 +122,7 @@ class App extends React.Component {
           wind={this.state.currentWind}
           chanceOfRain={this.state.chanceOfRain}
           humidity={this.state.currentHumidity}
+          summary={this.state.summary}
         />
       </div>
     );
