@@ -85,7 +85,7 @@ class App extends React.Component {
           this.setState({ currentWind: Math.round(currentWeather.windSpeed) });
           this.setState({ chanceOfRain: currentWeather.precipProbability });
           this.setState({ currentHumidity: currentWeather.humidity });
-          this.setState({ currentTemp: Math.round(currentWeather.apparentTemperature) });
+          this.setState({ currentTemp: Math.round(currentWeather.temperature) });
           this.setState({ highTemp: Math.round(response.daily.data[0].temperatureHigh) });
           this.setState({ lowTemp: Math.round(response.daily.data[0].temperatureLow) });
           console.log(currentWeather);
@@ -104,7 +104,7 @@ class App extends React.Component {
     function getWeather() {
       setTimeout(() => {
         weatherComponents();
-      }, 5000);
+      }, 7000);
     }
     getWeather();
   }

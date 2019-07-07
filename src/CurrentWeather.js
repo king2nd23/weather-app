@@ -9,27 +9,27 @@ const CurrentWeather = (props) => {
     <React.Fragment>
       <div className="container">
         <div className="weatherApp">
-          <div className= "todaysDetails" style={ {display: "inline-block"} }>
-            <div className= "icon" style={ {display: "inline-block", verticalAlign: "middle"} }>
+          <div className= "todaysDetails">
+            <div className= "icon">
               {props.icon}
             </div>
-            <div className="dailyTemp" style={ {display: "inline-block", verticalAlign: "middle"} }>
-              <p className="currentTemp" style={ {fontSize: "9rem"} }>{props.currentTemp}</p>
-              <p className= "hiLo temp" style={ {fontSize: "1.5rem"} }>{props.high}° / {props.low}°</p>
+            <div className="dailyTemp">
+              <p className="currentTemp">{props.currentTemp}</p>
+              <p className= "hiLoTemp">{props.high}° / {props.low}°</p>
             </div>
           </div>
-          <div className= "currentWeatherDetails" style={ {display: "inline-block", verticalAlign: "middle"} }>
+          <div className= "currentWeatherDetails">
             <ul style={ {listStyle: "none"} }>
-              <li className= "currentWindSpeed" style= { {fontSize: "1.5rem", textAlign: "center"} }>
-                <WiStrongWind size={40} color='#000' />
+              <li className= "currentWindSpeed">
+                <WiStrongWind size={40} />
                 <span>{props.wind}mph</span>
               </li>
-              <li className= "chanceOfPrecip" style= { {fontSize: "1.5rem"} }>
-                <WiUmbrella size={40} color='#000' />
+              <li className= "chanceOfPrecip">
+                <WiUmbrella size={40} />
                 <span>{props.chanceOfRain}</span>
               </li>
-              <li className= "currentHumidity" style= { {fontSize: "1.5rem"} }>
-                <WiRaindrops size={40} color='#000' />
+              <li className= "currentHumidity">
+                <WiRaindrops size={40} />
                 <span>{props.humidity}</span>
               </li>
             </ul>
