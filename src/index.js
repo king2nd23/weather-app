@@ -43,6 +43,17 @@ class App extends React.Component {
       },${this.state.long}`;
       return apiCall;
     };
+    //googlemaps api key AIzaSyDBbNeVUJg3BVLIi7_lr7xGciYsh7MDNlc
+    let geoCode = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.lat},${this.state.long}&key=AIzaSyDBbNeVUJg3BVLIi7_lr7xGciYsh7MDNlc`;
+
+    let getCityState = async url => {
+      fetch(url)
+        .then(res => res.json())
+        .then(response =>{
+          console.log(response);
+        })
+    }
+    console.log(getCityState(geoCode));
 
     //fetches response from DarkSky API and sets up state for app components
     let apiResponse = async url => {
