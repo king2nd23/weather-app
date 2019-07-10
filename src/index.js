@@ -18,7 +18,8 @@ class App extends React.Component {
     wind: null,
     chanceOfRain: null,
     humidity: null,
-    summary: null
+    summary: null,
+    city: null
   };
 
   componentDidMount() {
@@ -44,16 +45,11 @@ class App extends React.Component {
       return apiCall;
     };
     //googlemaps api key AIzaSyDBbNeVUJg3BVLIi7_lr7xGciYsh7MDNlc
-    let geoCode = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.lat},${this.state.long}&key=AIzaSyDBbNeVUJg3BVLIi7_lr7xGciYsh7MDNlc`;
-
-    let getCityState = async url => {
-      fetch(url)
-        .then(res => res.json())
-        .then(response =>{
-          console.log(response);
-        })
+    let geoCode = () => {
+      let getGeoCode = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
+      ${this.state.lat},${this.state.long}&key=AIzaSyDBbNeVUJg3BVLIi7_lr7xGciYsh7MDNlc`;
+      return getGeoCode;
     }
-    console.log(getCityState(geoCode));
 
     //fetches response from DarkSky API and sets up state for app components
     let apiResponse = async url => {
@@ -107,10 +103,22 @@ class App extends React.Component {
         .catch(error => console.log(error));
     };
 
+    let getCityState = async url => {
+      fetch(url)
+        .then(res => res.json())
+        .then(response =>{
+          this.setState({ city: response.results[5].address_components[1].long_name });
+        })
+    }
+
+
     //runs the apiURL() and the apiResponse()
     const weatherComponents = async () => {
       apiURL();
+      await geoCode();
       await apiResponse(apiURL());
+      // await console.log(getCityState(geoCode()));
+      await getCityState(geoCode())
     };
 
     //using setTimeout to wait for geolocation until I find a more efficient way
@@ -134,6 +142,7 @@ class App extends React.Component {
           chanceOfRain={this.state.chanceOfRain}
           humidity={this.state.currentHumidity}
           summary={this.state.summary}
+          city={this.state.city}
         />
       </div>
     );

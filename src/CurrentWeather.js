@@ -9,8 +9,9 @@ const CurrentWeather = (props) => {
     <React.Fragment>
       <div className="container">
         <div className="weatherApp">
-          <div className= "summary">
-            {props.summary}
+          <div className="locationSummary">
+            <div className="city">{props.city}</div>
+            <div className="summary">{props.summary}</div>
           </div>
           <div className= "todaysDetails">
             <div className= "icon">
@@ -22,7 +23,7 @@ const CurrentWeather = (props) => {
             </div>
           </div>
           <div className= "currentWeatherDetails">
-            <ul style={ {listStyle: "none"} }>
+            <ul>
               <li className= "currentWindSpeed">
                 <WiStrongWind size={40} />
                 <span>{props.wind}mph</span>

@@ -18,6 +18,10 @@ body{
 .chanceOfPrecip{
   font-size: 1.5rem;
 }
+.city{
+  font-size: 1.75rem;
+  font-weight: 900;
+}
 .container{
   position: relative;
   width: 100%;
@@ -76,7 +80,9 @@ body{
 .todaysDetails{
   display: inline-block;
 }
-
+ul{
+  list-style: none;
+}
 /* Media Queries */
 @media (max-width: 960px) {
   .currentWeatherDetails{
