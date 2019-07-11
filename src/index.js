@@ -39,7 +39,7 @@ class App extends React.Component {
 
     //adds the latitude and longitude to the api request URL
     let apiURL = () => {
-      let apiCall = `https://api.darksky.net/forecast/c2f9808ca1a73ccc2367f463c969facc/${
+      let apiCall = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/c2f9808ca1a73ccc2367f463c969facc/${
         this.state.lat
       },${this.state.long}`;
       return apiCall;
@@ -103,6 +103,7 @@ class App extends React.Component {
         .catch(error => console.log(error));
     };
 
+    //gets the user's city using reverse geocoding from Google Maps API
     let getCityState = async url => {
       fetch(url)
         .then(res => res.json())
@@ -112,7 +113,7 @@ class App extends React.Component {
     }
 
 
-    //runs the apiURL() and the apiResponse()
+    //runs the apiURL(), apiResponse(), and getCityState()
     const weatherComponents = async () => {
       apiURL();
       await geoCode();
