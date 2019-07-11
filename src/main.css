@@ -112,4 +112,7 @@ ul{
     display: block;
     margin: 0 auto;
   }
+  .weatherApp{
+    top: 15%;
+  }
 }
