@@ -108,6 +108,12 @@ ul{
     display: block;
     margin: 0 auto;
   }
+  .spinner{
+    width: 75vw;
+    height: auto;
+    margin: 0 auto;
+    border: 2px solid red;
+  }
   .todaysDetails{
     display: block;
     margin: 0 auto;

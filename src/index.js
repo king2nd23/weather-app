@@ -116,7 +116,6 @@ class App extends React.Component {
         })
     }
 
-
     //runs the apiURL(), apiResponse(), and getCityState()
     const weatherComponents = async () => {
       apiURL();
@@ -140,7 +139,7 @@ class App extends React.Component {
       return <div>{this.state.errormsg}</div>
     }
 
-    if (!this.state.error && this.state.lat) {
+    if (!this.state.error && this.state.city) {
       return (
         <div>
           <CurrentWeather
@@ -154,13 +153,12 @@ class App extends React.Component {
             summary={this.state.summary}
             city={this.state.city}
           />
-        <Spinner />
         </div>
       )
     }
-    // return(
-    //   <Spinner />
-    // )
+    return(
+      <Spinner />
+    )
   }
 
   render() {
