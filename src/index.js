@@ -4,6 +4,10 @@ import CurrentWeather from "./CurrentWeather";
 import { WiDaySunny, WiNightClear, WiRain, WiSnow, WiSleet, WiStrongWind, WiFog,
 WiCloudy, WiDayCloudy, WiNightAltPartlyCloudy, WiUmbrella,WiRaindrops, WiWindy}
 from 'weather-icons-react';
+import Spinner from "./Spinner";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 //setting up initial state
 class App extends React.Component {
@@ -131,22 +135,40 @@ class App extends React.Component {
     getWeather();
   }
 
+  renderContent() {
+    if (this.state.errormsg && !this.state.lat) {
+      return <div>{this.state.errormsg}</div>
+    }
+
+    if (!this.state.error && this.state.lat) {
+      return (
+        <div>
+          <CurrentWeather
+            icon={this.state.icon}
+            currentTemp={this.state.currentTemp}
+            high={this.state.highTemp}
+            low={this.state.lowTemp}
+            wind={this.state.currentWind}
+            chanceOfRain={this.state.chanceOfRain}
+            humidity={this.state.currentHumidity}
+            summary={this.state.summary}
+            city={this.state.city}
+          />
+        <Spinner />
+        </div>
+      )
+    }
+    // return(
+    //   <Spinner />
+    // )
+  }
+
   render() {
     return (
       <div>
-        <CurrentWeather
-          icon={this.state.icon}
-          currentTemp={this.state.currentTemp}
-          high={this.state.highTemp}
-          low={this.state.lowTemp}
-          wind={this.state.currentWind}
-          chanceOfRain={this.state.chanceOfRain}
-          humidity={this.state.currentHumidity}
-          summary={this.state.summary}
-          city={this.state.city}
-        />
+        {this.renderContent()}
       </div>
-    );
+    )
   }
 }
 
