@@ -25,6 +25,7 @@ body{
 .container{
   position: relative;
   width: 100vw;
+  min-height: 350px;
   height: 100vh;
   background-color: beige;
   margin: 0 auto;
@@ -64,6 +65,11 @@ body{
   margin-right: 40px;
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  top: 40px;
+}
+.locationSummary{
+  margin: 0 40px 25px 0;
 }
 .spinner{
   width: 50%;
@@ -95,6 +101,9 @@ ul{
 }
 /* Media Queries */
 @media (max-width: 960px) {
+  .container{
+    min-width: 290px;
+  }
   .currentWeatherDetails{
     position: relative;
     display: block;
@@ -119,9 +128,13 @@ ul{
     margin: 0 auto;
   }
   .spinner{
-    width: 75vw;
+    width: 100vw;
     height: auto;
     margin: 0 auto;
+    position: absolute;
+    top: 37.5%;
+    left: 0;
+    align-items: center;
   }
   .todaysDetails{
     display: block;

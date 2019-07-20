@@ -98,8 +98,6 @@ class App extends React.Component {
           this.setState({ highTemp: Math.round(response.daily.data[0].temperatureHigh) });
           this.setState({ lowTemp: Math.round(response.daily.data[0].temperatureLow) });
           this.setState({ summary: currentWeather.summary });
-          console.log(currentWeather);
-          console.log(response);
         })
         .catch(error => console.log(error));
     };
