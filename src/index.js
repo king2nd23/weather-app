@@ -4,10 +4,7 @@ import CurrentWeather from "./CurrentWeather";
 import { WiDaySunny, WiNightClear, WiRain, WiSnow, WiSleet, WiStrongWind, WiFog,
 WiCloudy, WiDayCloudy, WiNightAltPartlyCloudy, WiUmbrella,WiRaindrops, WiWindy}
 from 'weather-icons-react';
-import Spinner from "./Spinner";
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-
+import LoadingScreen from "./LoadingScreen";
 
 //setting up initial state
 class App extends React.Component {
@@ -95,8 +92,8 @@ class App extends React.Component {
               this.setState({ icon:  <WiNightAltPartlyCloudy size={200} color='#000' />})
             };
           this.setState({ currentWind: Math.round(currentWeather.windSpeed) });
-          this.setState({ chanceOfRain: Math.round(currentWeather.precipProbability) * 100 });
-          this.setState({ currentHumidity: currentWeather.humidity * 100});
+          this.setState({ chanceOfRain: Math.round(currentWeather.precipProbability * 100) });
+          this.setState({ currentHumidity: Math.round(currentWeather.humidity * 100)});
           this.setState({ currentTemp: Math.round(currentWeather.temperature) });
           this.setState({ highTemp: Math.round(response.daily.data[0].temperatureHigh) });
           this.setState({ lowTemp: Math.round(response.daily.data[0].temperatureLow) });
@@ -156,9 +153,7 @@ class App extends React.Component {
         </div>
       )
     }
-    return(
-      <Spinner />
-    )
+    return <LoadingScreen />
   }
 
   render() {

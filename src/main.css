@@ -24,9 +24,10 @@ body{
 }
 .container{
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: beige;
+  margin: 0 auto;
 }
 .currentHumidity{
   font-size: 1.5rem;
@@ -64,10 +65,25 @@ body{
   display: inline-block;
   vertical-align: middle;
 }
+.spinner{
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
 .summary{
   font-size: 1.75rem;
   display: block;
   color: #373D3F;
+}
+.todaysDetails{
+  display: inline-block;
+}
+ul{
+  list-style: none;
 }
 .weatherApp{
  height: auto;
@@ -76,12 +92,6 @@ body{
  top: 25%;
  left: 25%;
  text-align: center;
-}
-.todaysDetails{
-  display: inline-block;
-}
-ul{
-  list-style: none;
 }
 /* Media Queries */
 @media (max-width: 960px) {
@@ -112,7 +122,6 @@ ul{
     width: 75vw;
     height: auto;
     margin: 0 auto;
-    border: 2px solid red;
   }
   .todaysDetails{
     display: block;
